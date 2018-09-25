@@ -1,0 +1,33 @@
+name: ask-db-nlq
+channels:
+- pytorch
+- defaults
+- conda-forge
+dependencies:
+- pytorch
+- torchvision
+- cuda92
+- cython
+- spacy
+- pip
+- graphene
+- copy
+- path.py
+#For Stanford stanza - start
+#	- requests  #covered
+#	- ConfigArgParse==0.10.0 # requires python 2.7
+- ConfigArgParse
+- nose
+- mock
+- protobuf
+- pip:
+	- https://github.com/stanfordnlp/stanza.git
+	- pypng
+  - pyhocon
+	- python-Levenshtein
+	- google	
+	#For Stanford stanza - end
+	- torchtext
+	- Flask-GraphQL
+prefix: /home/stevop/.conda/envs/ask-db-nlq
+

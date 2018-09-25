@@ -1,0 +1,24 @@
+version: "3.2"
+services:
+  ask-db-nlq:
+    image: ask-db-nlq
+    networks: 
+        - inside
+        - outside
+    ports: 
+      - 5000:5000
+    volumes:
+#need to bind  
+      - wikisql:/wikisql
+    working_dir: /wikisql
+    environment:
+      FLASK_APP: api.py
+    command: bash startapi.sh
+  corenlp:
+    image: nlpbox/corenlp
+    networks: 
+      - inside
+networks:
+  inside:
+    internal: true
+  outside:
