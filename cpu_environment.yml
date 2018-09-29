@@ -1,4 +1,4 @@
-name: ask-db-nlq
+name: ask-db-nlq-cpu
 channels:
 - pytorch
 - defaults
@@ -6,7 +6,6 @@ channels:
 dependencies:
 - pytorch
 - torchvision
-- cuda92
 - cython
 - spacy
 - pip
@@ -30,5 +29,5 @@ dependencies:
   #For Stanford stanza - end
   - torchtext
   - Flask-GraphQL
-prefix: /home/stevop/.conda/envs/ask-db-nlq
+prefix: /home/stevop/.conda/envs/ask-db-nlq-cpu
 

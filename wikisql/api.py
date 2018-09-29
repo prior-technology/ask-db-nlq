@@ -5,7 +5,7 @@ from schema import build_schema
 import apprun
 import engine
 
-(rootQueryClass,mutationsClass) = build_schema('/home/stevop/repos/coarse2fine/data_model/wikisql/data')
+(rootQueryClass,mutationsClass) = build_schema('/data_model/wikisql/data')
 schema = graphene.Schema(query=rootQueryClass, mutation=mutationsClass)
 
 app = Flask(__name__)
@@ -21,7 +21,7 @@ def after_request(response):
 
 app.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
 
-engine.init('/home/stevop/repos/coarse2fine/data_model/wikisql')
+engine.init('/data_model/wikisql')
 
 # Optional, for adding batch query support (used in Apollo-Client)
 #app.add_url_rule('/graphql/batch', view_func=GraphQLView.as_view('graphql', schema=schema, batch=True))

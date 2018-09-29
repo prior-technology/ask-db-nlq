@@ -1,3 +1,3 @@
-source activate ask-db-nlq
+source activate ask-db-nlq-cpu
 export FLASK_APP=api.py
 flask run

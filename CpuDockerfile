@@ -1,0 +1,14 @@
+FROM continuumio/miniconda3
+
+ENV LANG en_IE.utf8
+
+RUN apt-get update --fix-missing && \
+    apt-get install -y gcc && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY cpu_environment.yml ./
+RUN conda env create -f cpu_environment.yml
+
+COPY spacy_download_cpu.sh ./
+RUN bash ./spacy_download_cpu.sh

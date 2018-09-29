@@ -28,7 +28,8 @@ def init(data_path):
   opt.db_file = os.path.join(opt.data_path, 'data/{}.db'.format(opt.split))
   table_file = os.path.join(opt.data_path, 'data/{}.tables.jsonl'.format(opt.split))
   opt.pre_word_vecs = os.path.join(opt.data_path, 'embedding')
-  torch.cuda.set_device(opt.gpu)
+  if torch.cuda.is_available():
+    torch.cuda.set_device(opt.gpu)
   dummy_parser = argparse.ArgumentParser(description='train.py')
   opts.model_opts(dummy_parser)
   opts.train_opts(dummy_parser)

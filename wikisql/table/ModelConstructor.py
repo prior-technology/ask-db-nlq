@@ -2,6 +2,7 @@
 This file is for models creation, which consults options
 and creates each encoder and decoder accordingly.
 """
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -137,6 +138,7 @@ def make_base_model(model_opt, fields, checkpoint=None):
         print('Loading model')
         model.load_state_dict(checkpoint['model'])
 
-    model.cuda()
+    if torch.cuda.is_available():
+        model.cuda()
 
     return model

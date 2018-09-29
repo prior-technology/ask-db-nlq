@@ -1,7 +1,7 @@
 version: "3.2"
 services:
-  ask-db-nlq:
-    image: ask-db-nlq
+  ask-db-nlq-cpu:
+    image: ask-db-nlq-cpu
     networks: 
         - inside
         - outside
@@ -9,7 +9,9 @@ services:
       - 5000:5000
     volumes:
 #need to bind  
-      - wikisql:/wikisql
+      - ./wikisql:/wikisql
+      - ./embedding:/wikisql/embedding
+      - ./data_model:/data_model
     working_dir: /wikisql
     environment:
       FLASK_APP: api.py

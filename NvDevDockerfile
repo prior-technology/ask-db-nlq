@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.2-runtime-centos7
+FROM nvidia/cuda:9.2-devel-centos7
 
 #inspired by https://github.com/conda/conda-docker/blob/master/miniconda3/centos7/Dockerfile
 RUN yum -y update \

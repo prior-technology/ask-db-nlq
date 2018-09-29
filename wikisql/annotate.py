@@ -1,6 +1,5 @@
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 import os
-import records
 # import ujson as json
 import json
 from stanza.nlp.corenlp import CoreNLPClient
