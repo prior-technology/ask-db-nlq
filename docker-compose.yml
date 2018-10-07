@@ -9,9 +9,8 @@ services:
       - 5000:5000
     volumes:
 #need to bind  
-      - ./wikisql:/wikisql
-      - ./embedding:/wikisql/embedding
-      - ./data_model:/data_model
+      - ./embedding:/wikisql/embedding/:z
+      - ./data_model:/data_model/:z
     working_dir: /wikisql
     environment:
       FLASK_APP: api.py

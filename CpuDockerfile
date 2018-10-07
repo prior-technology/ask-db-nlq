@@ -12,3 +12,4 @@ RUN conda env create -f cpu_environment.yml
 
 COPY spacy_download_cpu.sh ./
 RUN bash ./spacy_download_cpu.sh
+COPY wikisql/ /wikisql
