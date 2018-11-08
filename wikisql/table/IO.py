@@ -344,7 +344,7 @@ class TableDataset(torchtext.data.Dataset):
         fields["tbl_split"] = torchtext.data.Field(
             use_vocab=False, pad_token=0)
         fields["tbl_mask"] = torchtext.data.Field(
-            use_vocab=False, tensor_type=torch.ByteTensor, batch_first=True, pad_token=1)
+            use_vocab=False, dtype=torch.uint8, batch_first=True, pad_token=1)
         fields["lay"] = torchtext.data.Field(
             sequential=False, batch_first=True)
         fields["cond_op"] = torchtext.data.Field(

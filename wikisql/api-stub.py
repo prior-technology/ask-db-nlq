@@ -3,7 +3,7 @@ from flask_graphql import GraphQLView
 from flask import Flask
 from schema import build_schema
 import apprun
-import engine
+#import engine
 import os
 
 model_dir = os.getenv('MODEL_DIR', '/data_model/wikisql')
@@ -13,7 +13,6 @@ data_dir = os.getenv('DATA_DIR', model_dir + '/data')
 schema = graphene.Schema(query=rootQueryClass, mutation=mutationsClass)
 
 app = Flask(__name__)
-app.config['SERVER_NAME'] = os.getenv('FLASK_SERVER','0.0.0.0:4000')
 
 #(translator, opt) = apprun.initialise(app)
 
@@ -24,9 +23,14 @@ def after_request(response):
     header['Access-Control-Allow-Headers']= 'Origin, X-Requested-With, Content-Type, Accept'
     return response
 
+@app.route('/ping')
+def ping():
+    return "pong"
+
+
 app.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
 
-engine.init(model_dir)
+#engine.init(model_dir)
 
 # Optional, for adding batch query support (used in Apollo-Client)
 #app.add_url_rule('/graphql/batch', view_func=GraphQLView.as_view('graphql', schema=schema, batch=True))

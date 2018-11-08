@@ -6,7 +6,7 @@ services:
         - inside
         - outside
     ports: 
-      - 5000:5000
+      - "4000:4000"
     volumes:
 #need to bind  
       - ./embedding:/wikisql/embedding/:z
@@ -14,6 +14,7 @@ services:
     working_dir: /wikisql
     environment:
       FLASK_APP: api.py
+      CORE_NLP_URL: http://corenlp:9000/
     command: bash startapi.sh
   corenlp:
     image: nlpbox/corenlp

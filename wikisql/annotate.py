@@ -14,8 +14,9 @@ client = None
 
 def annotate(sentence, lower=True):
     global client
+    core_nlp_url = os.environ.get("CORE_NLP_URL","http://localhost:9000")
     if client is None:
-        client = CoreNLPClient(default_annotators='ssplit,tokenize'.split(','))
+        client = CoreNLPClient(default_annotators='ssplit,tokenize'.split(','), endpoint=core_nlp_url)
     words, gloss, after = [], [], []
     for s in client.annotate(sentence):
         for t in s:

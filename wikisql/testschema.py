@@ -8,7 +8,7 @@ class TestSchema(unittest.TestCase):
     self.schema = graphene.Schema(query=rootQueryClass, mutation=mutationsClass)
     #need to init a fake engine
     
-  def test_query(self):
+  def test_mutation(self):
     result = self.schema.execute("""mutation m {
     askQuestion(tableId:"1-10015132-11", questionText: "How many years did Brad play for Toronto") 
     {
@@ -17,6 +17,10 @@ class TestSchema(unittest.TestCase):
 }""")
     print(result.data['sql'])
     self.assertEqual('SELECT  col4 FROM table WHERE col5 = Brad', result.data['sql'])
+
+  def test_query(self):
+    result = self.schema.execute("""{"query":"{ tables {id, tablename }}"}""")
+    print(result.data['sql'])
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,7 +2,7 @@ import json
 import graphene
 import os
 import codecs
-import engine
+#import engine
 
 js_list = []
 js_lookup = {}
@@ -26,7 +26,7 @@ class RootQuery(graphene.ObjectType):
 
     def resolve_tables(self, info, id=None):
         if id is None:
-            tables = [make_wikisqltable(jsonline) for jsonline in js_list[1:50]]
+            tables = [make_wikisqltable(jsonline) for jsonline in js_list[1:5]]
             return tables
         jsonline = js_lookup[id]
         return [make_wikisqltable(jsonline)]
@@ -38,7 +38,8 @@ class AskQuestion(graphene.Mutation):
     sql = graphene.String()
 
     def mutate(self, info, table_id, question_text):
-        sql = engine.ask_question(table_id,question_text)
+#        sql = engine.ask_question(table_id,question_text)
+        sql = 'bobby tables'
         return AskQuestion(sql=sql)
 
 class RootMutations(graphene.ObjectType):
